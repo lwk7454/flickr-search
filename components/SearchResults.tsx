@@ -12,17 +12,16 @@ export default function SearchResults() {
   const [results, setResults] = useState<FlickrItem[] | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
-  const debouncedSearch = useDebounce(async () => {
+  const debouncedSearch = useDebounce(async (q: string) => {
+    if (query.length < 2) return
     setIsLoading(true)
-    const response = await getImgList(query.split(' '))
+    const response = await getImgList(q.split(' '))
     setResults(response.items)
     setIsLoading(false)
   })
 
   useEffect(() => {
-    if (query.length > 2) {
-      debouncedSearch()
-    }
+    debouncedSearch(query)
   }, [query])
 
   return (

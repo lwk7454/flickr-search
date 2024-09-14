@@ -6,6 +6,8 @@ Visit: https://flickr-search-phi.vercel.app/
 - Bun
 
 ## Getting Started
+Copy `.env.example` to `.env.local`
+
 Install dependencies:
 ```bash
 bun install
